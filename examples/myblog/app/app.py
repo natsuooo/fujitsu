@@ -6,11 +6,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    if ("name" in session):
-        if (not session["name"] == None):
-            app.add_template_global(name="status",f="login")
-    else:
-        app.add_template_global(name="status",f="n")
+    # if ("name" in session):
+    #     if (not session["name"] == None):
+    #         app.add_template_global(name="status",f="login")
+    # else:
+    app.add_template_global(name="status",f="n")
     posts = db_session.query(BlogContent).order_by(BlogContent.id.desc())
     return render_template("index.html",posts=posts)
 
