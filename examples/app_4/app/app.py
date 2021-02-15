@@ -11,9 +11,11 @@ def teachers():
     users = User.query.all()
     return render_template("teachers.html", users=users)
 
-@app.route("/mypage")
-def mypage():
-    return render_template("mypage.html")
+@app.route("/mypage/<int:id>")
+def mypage(id):
+    user = User.query.filter_by(id=id).first()
+    return render_template("mypage.html", user=user)
+    
 
 @app.route("/teachers/<int:id>")
 def teacher(id):

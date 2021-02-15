@@ -1,6 +1,38 @@
 {% extends "main_layout.html" %}
 {% block content%}
 
+
+<div class="container">
     <h1>マイページ</h1>
-    
+    <p>勉強時間</p>
+    <p>{{user.name}}先生に習っています．</p>
+    <a href="#" class="btn btn-primary">ビデオチャットを始める</a>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        レビュー
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">レビューをお願いします！</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <textarea class="form-control" id="review" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">送信</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
