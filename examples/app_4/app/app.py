@@ -22,7 +22,10 @@ def teachers():
 def mypage():
     return render_template("mypage.html")
 
+@app.route("/teachers/<id>")
+def teachers(id):
+    return render_template("teacher.html")
 
-#おまじない
+
 if __name__ == "__main__":
     app.run(debug=True)
