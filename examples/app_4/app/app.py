@@ -1,22 +1,15 @@
-#Flaskとrender_template（HTMLを表示させるための関数）をインポート
-from flask import Flask,render_template
+from flask import Flask,render_template, request
+from models.models import User
 
-#Flaskオブジェクトの生成
 app = Flask(__name__)
 
 
 @app.route("/")
-def hello():
-    return render_template('index.html')
-
-
 @app.route("/index")
-def index():
-    return render_template("index.html")
-
 @app.route("/teachers")
 def teachers():
-    return render_template("teachers.html")
+    users = User.query.all()
+    return render_template("teachers.html", users=users)
 
 @app.route("/mypage")
 def mypage():
@@ -24,7 +17,8 @@ def mypage():
 
 @app.route("/teachers/<int:id>")
 def teacher(id):
-    return render_template("teacher.html")
+    user = User.query.filter_by(id=id).first()
+    return render_template("teacher.html", user=user)
 
 
 if __name__ == "__main__":

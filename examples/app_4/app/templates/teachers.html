@@ -2,7 +2,7 @@
 {% block content%}
 
     <div class="container">
-        {% for i in range(10) %}
+        {% for user in users %}
         
         <div class="card shadow-sm p-3 my-3" >
             <div class="row">
@@ -11,16 +11,17 @@
                 </div>
                 <div class="col-10">
                     <div class="card-title">
-                        <h5>佐藤太郎</h5>
+                        <h5>{{user.name}}</h5>
                     </div>
                     <div class="card-text">
-                        1,000￥/h ~
-                        <br>10:00~19:00
+                        {{user.price}}
+                        <br>{{user.time}}
                     </div>
                 </div>
             </div>
-            <a href="/teachers/1" class="stretched-link"></a>
+            <a href="/teachers/{{ user.id }}" class="stretched-link"></a>
         </div>
+
         {% endfor %}
     </div>
 
