@@ -1,0 +1,16 @@
+{% extends "main_layout.html" %}
+{% block content%}
+
+{% if status == "login" %}
+  <a href="{{url_for("delete",title=post.title)}}">削除</a>
+  <br>
+  <a href="{{url_for("edit",title=post.title)}}">編集</a>
+  <br>
+{% endif %}
+<p>投稿:{{post.date}}</p>
+  <div>
+    <h1>{{post.title}}</h1>
+    <p>{{ post.body | safe}}
+</p>
+  </div>
+{% endblock %}
