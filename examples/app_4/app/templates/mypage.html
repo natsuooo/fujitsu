@@ -3,20 +3,25 @@
 
 
 <div class="container">
-    <h1>マイページ</h1>
-    <p>勉強時間</p>
-    <p>{{user.name}}先生に習っています．</p>
-    <a href="#" class="btn btn-primary">ビデオチャットを始める</a>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        レビュー
-    </button>
+    <h5 class="mt-3">今週の予定</h5>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">2月20日 18:00~20:00</h5>
+            <p class="card-text">佐藤先生</p>
+            <a href="#" class="btn btn-primary">ビデオチャットを始める</a>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                レビュー
+            </button>
+        </div>
+    </div>
+    
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header text-center">
                     <h5 class="modal-title" id="exampleModalLabel">レビューをお願いします！</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

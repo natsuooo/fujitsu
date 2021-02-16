@@ -1,11 +1,38 @@
 {% extends "main_layout.html" %}
 {% block content%}
 
-    <div class="container">
-        <p>{{user.name}}</p>
-        <p>{{user.price}}</p>
-        <p>{{user.time}}</p>
-        <a href="/mypage/{{user.id}}" class="btn btn-primary">リクエスト</a>
+<div class="container">
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="container text-center">
+                <img src="/static/images/{{teacher.image}}.png" class="rounded-circle" width="150" height="150"
+                    alt="...">
+                <h5 class="card-title mt-3">{{teacher.name}} 先生</h5>
+                <table class="table mt-4">
+                    <tbody>
+                        <tr>
+                            <th scope="row">料金</th>
+                            <td>{{teacher.price}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">時間</th>
+                            <td>{{teacher.time}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">自己紹介</th>
+                            <td colspan="2">{{teacher.text}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-grid gap-2 mt-5 mb-2">
+                <a href="/mypage/{{teacher.id}}" class="btn btn-primary">リクエスト</a>
+            </div>
+        </div>
     </div>
+
+    <h5 class="mt-5">レビュー</h5>
+
+</div>
 
 {% endblock %}

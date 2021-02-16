@@ -1,28 +1,41 @@
 {% extends "main_layout.html" %}
 {% block content%}
 
-    <div class="container">
-        {% for user in users %}
-        
-        <div class="card shadow-sm p-3 my-3" >
-            <div class="row">
-                <div class="col-2">
-                    <img src="/static/images/cat-2.jpg" class="img-circle mx-auto d-block" width="50" height="50" alt="...">
+<div class="container">
+    {% for teacher in teachers %}
+
+    <div class="card shadow-sm p-3 my-3">
+        <div class="row">
+            <div class="col-2">
+                <img src="/static/images/{{teacher.image}}.png" class="rounded-circle" width="50" height="50" alt="...">
+            </div>
+            <div class="col-10">
+                <div class="card-title">
+                    <h5>{{teacher.name}}</h5>
                 </div>
-                <div class="col-10">
-                    <div class="card-title">
-                        <h5>{{user.name}}</h5>
-                    </div>
-                    <div class="card-text">
-                        {{user.price}}円/h
-                        <br>{{user.time}}
-                    </div>
+                <div class="card-text">
+                    {{teacher.price}}
+                    <br>{{teacher.time}}
                 </div>
             </div>
-            <a href="/teachers/{{ user.id }}" class="stretched-link"></a>
         </div>
-
-        {% endfor %}
+        <a href="/teachers/{{ teacher.id }}" class="stretched-link"></a>
     </div>
+
+    {% endfor %}
+
+
+
+</div>
+
+<footer class="fixed-bottom">
+    <div class="container bg-white p-3">
+        <div class="d-grid gap-2">
+            <a href="/register" class="btn btn-primary" type="button">先生になる</a>
+        </div>
+    </div>
+
+
+</footer>
 
 {% endblock %}
