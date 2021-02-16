@@ -8,18 +8,17 @@
     <div class="card shadow-sm mt-3">
         <div class="card-body">
             <h5 class="card-title">{{teacher.time}}</h5>
-            <p class="card-text">{{teacher.name}} 先生</p>
+            <p class="card-text">{{teacher.subject}}（{{teacher.name}}先生）</p>
             <a href="#" class="btn btn-primary">ビデオチャットを始める</a>
         </div>
     </div>
     {% endfor %}
 
     <h5 class="mt-5">終わった授業</h5>
-    {% for teacher in teachers %}
     <div class="card shadow-sm mt-3">
         <div class="card-body">
-            <h5 class="card-title">{{teacher.time}}</h5>
-            <p class="card-text">{{teacher.name}} 先生</p>
+            <h5 class="card-title">2月15日 14:00~17:00</h5>
+            <p class="card-text">英語（{{teachers[0].name}}先生）</p>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#report">
                 レポート
@@ -30,18 +29,35 @@
             </button>
         </div>
     </div>
-    {% endfor %}
-    
+
+    <!-- Modal -->
+    <div class="modal fade" id="report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">レポート</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    たかしくんは，終始落ち着いて勉強に取り組まれていました．
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Modal -->
     <div class="modal fade" id="review" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title" id="exampleModalLabel">レビューをお願いします！</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">感想を送る</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form>
+                <form action="/" method="POST">
                     <div class="modal-body">
                         <div class="mb-3">
                             <textarea class="form-control" id="review" rows="5"></textarea>

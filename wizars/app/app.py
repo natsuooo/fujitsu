@@ -1,4 +1,4 @@
-from flask import Flask,render_template, request
+from flask import Flask,render_template, request, url_for ,redirect
 from models.models import Teacher, Review, Lecture
 from models.database import db_session
 from datetime import datetime
@@ -14,16 +14,23 @@ def index():
     teachers = Teacher.query.all()
     return render_template("teachers.html", teachers=teachers)
 
-@app.route("/mypage", methods=["GET", "POST"])
-def mypage():
+@app.route("/request", methods=["POST"])
+def req():
     if request.method == "POST":
         teacher_id = request.form["teacher_id"]
         lecture = Lecture(teacher_id, datetime.now())
         db_session.add(lecture)
         db_session.commit()
+    return redirect(url_for("mypage"))
+
+@app.route("/mypage")
+def mypage():
+    # if request.method == "POST":
+    #     teacher_id = request.form["teacher_id"]
+    #     lecture = Lecture(teacher_id, datetime.now())
+    #     db_session.add(lecture)
+    #     db_session.commit()
     # elif request.method == "POST":
-
-
 
     # ここ非効率的なコード．
     # 本来はリレーショナルデータベースを使うべきだが，サボっている．
