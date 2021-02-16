@@ -32,8 +32,7 @@ def mypage():
     #     db_session.commit()
     # elif request.method == "POST":
 
-    # ここ非効率的なコード．
-    # 本来はリレーショナルデータベースを使うべきだが，サボっている．
+    # 非効率．余裕があればリレーショナルDBへ．
     lectures = Lecture.query.all()
     teachers = []
     for lecture in lectures:
