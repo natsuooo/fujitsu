@@ -36,7 +36,26 @@
         </div>
     </div>
 
-    <h5 class="mt-5">レビュー</h5>
+    <h5 class="mt-5 mb-1">レビュー</h5>
+    
+    {% if score_average != 0 %}
+    <div class="stars-review">
+        <span>
+            {% for _ in range(score_round) %}
+            <label style="color: #F8C601; margin-right: -5px;">★</label>
+            {% endfor %}
+            {% for _ in range(5-score_round) %}
+            <label style="color: #D2D2D2; margin-right: -5px;;">★</label>
+            {% endfor %}
+            <label style="margin-left: 5px;">{{score_average}}</label>
+        </span>
+    </div>
+    {% endif %}
+
+    {% if not reviews %}
+    <p>まだレビューはありません．</p>
+    {% endif %}
+
     {% for review in reviews %}
     <div class="card shadow-sm p-3 my-3">
         <div class="card-title">

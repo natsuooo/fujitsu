@@ -18,8 +18,15 @@ def teachers():
 @app.route("/teachers/<int:id>")
 def teacher(id):
     reviews = Review.query.filter_by(teacher_id=id).all()
+    score = []
+    for review in reviews:
+        score.append(review.rating)
+    score_average = 0
+    if len(score) != 0:
+        score_average = round(sum(score) / len(score), 1)
+    score_round = round(score_average)
     teacher = Teacher.query.filter_by(id=id).first()
-    return render_template("teacher.html", teacher=teacher, reviews=reviews)
+    return render_template("teacher.html", teacher=teacher, reviews=reviews, score_average=score_average, score_round=score_round)
 
 # マイページ
 @app.route("/mypage")
@@ -37,7 +44,7 @@ def mypage():
         return render_template("mypage.html")
     
 # 先生登録
-@app.route("/register", methods=["POST"])
+@app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         name = request.form["name"]
@@ -49,7 +56,9 @@ def register():
         teacher = Teacher(name, subject, price, time, text, image, datetime.now())
         db_session.add(teacher)
         db_session.commit()
-    return redirect(url_for("teachers"))
+        return redirect(url_for("teachers"))
+    else:
+        return render_template("register.html")
 
 # リクエスト
 @app.route("/request", methods=["POST"])
