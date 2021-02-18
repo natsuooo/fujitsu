@@ -52,7 +52,7 @@ def register():
         price = request.form["price"]
         time = request.form["time"]
         text = request.form["text"]
-        image = random.randrange(5)
+        image = random.randrange(10)
         teacher = Teacher(name, subject, price, time, text, image, datetime.now())
         db_session.add(teacher)
         db_session.commit()
@@ -82,6 +82,17 @@ def review():
         db_session.commit()
     return redirect(url_for("mypage"))
 
+# データリセット
+@app.route("/reset", methods=["POST"])
+def reset():
+    if request.method == "POST":
+        reset = request.form["reset"]
+        if reset == "reset":
+            db_session.query(Teacher).delete()
+            db_session.query(Lecture).delete()
+            db_session.query(Review).delete()
+            db_session.commit()
+    return redirect(url_for("teachers"))
 
 if __name__ == "__main__":
     app.run(debug=True)

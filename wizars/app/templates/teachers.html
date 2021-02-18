@@ -2,7 +2,18 @@
 {% block content%}
 
 <div class="container mb-5">
-    {% for teacher in teachers if teachers != [] %}
+    {% if teachers != None %}
+
+    {% for teacher in teachers %}
+
+    {% if loop.index == 1 %}
+    <h5>あなたにおすすめの先生</h5>
+    {% endif %}
+
+    {% if loop.index == 2 %}
+    <hr>
+    <h5>先生一覧</h5>
+    {% endif %}
 
     <div class="card shadow-sm px-2 py-3 my-3">
         <div class="row">
@@ -23,7 +34,7 @@
     </div>
 
     {% endfor %}
-
+    {% endif %}
 
 </div>
 

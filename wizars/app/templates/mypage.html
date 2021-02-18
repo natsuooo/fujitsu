@@ -5,62 +5,48 @@
     <h5 class="mt-3">勉強の記録</h5>
     <p class="my-5">ここにグラフアニメーション</p>
     <h5 class="mt-3">これからの授業</h5>
-    {% for teacher in teachers if teachers != None %}
+    {% for teacher in teachers  %}
     <div class="card shadow-sm mt-3">
         <div class="card-body">
             <h5 class="card-title">{{teacher.time}}</h5>
             <p class="card-text">{{teacher.subject}}（<a href="/teachers/{{teacher.id}}" class="text-dark"
                     style="text-decoration: none;">{{teacher.name}} 先生</a>）</p>
-            <a href="#" class="btn btn-primary">ビデオチャットを始める</a>
+            <div class="card-text">
+                <a href="#" class="btn btn-primary" role="button">ビデオチャットを始める</a>
+            </div>
+                
         </div>
     </div>
     {% endfor %}
 
     <h5 class="mt-5">終わった授業</h5>
 
-    {% if teachers != None %}
+    {% for teacher in teachers %}
+    {% if loop.first %}
     <div class="card shadow-sm mt-3 mb-5">
         <div class="card-body">
             <h5 class="card-title">2月15日 14:00~17:00</h5>
-            <p class="card-text">英語（<a href="/teachers/{{teachers[0].id}}" class="text-dark"
-                    style="text-decoration: none;">{{teachers[0].name}} 先生</a>）</p>
-            <!-- Button trigger modal -->
-            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#report">
-                レポート
-            </button> -->
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">
-                レビュー
-            </button>
-        </div>
-    </div>
-    {% endif %}
+            <p class="card-text">英語（<a href="/teachers/{{teacher.id}}" class="text-dark"
+                    style="text-decoration: none;">{{teacher.name}} 先生</a>）</p>
 
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">レポート</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="First group">
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#report">
+                        レポート
+                    </button>
                 </div>
-                <div class="modal-body">
-                    たかしくんは，終始落ち着いて勉強に取り組まれていました．
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                    レビュー
+                </button>
             </div>
         </div>
-    </div> -->
-
-
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title" id="exampleModalLabel">レビュー</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{teacher.name}} 先生へのレビュー</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/review" method="POST">
@@ -78,7 +64,7 @@
                             <textarea class="form-control" id="text" rows="5" name="text"></textarea>
                         </div>
                     </div>
-                    <input type="hidden" class="form-control" name="teacher_id" value="{{teachers[0].id}}">
+                    <input type="hidden" class="form-control" name="teacher_id" value="{{teacher.id}}">
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">送信</button>
                     </div>
@@ -86,6 +72,36 @@
             </div>
         </div>
     </div>
+    {% endif %}
+    {% endfor %}
+
+    <form action="/reset" method="POST" class="my-5">
+        <input type="hidden" class="form-control" name="reset" value="reset">
+        <div class="d-grid gap-2 mt-5 mb-2">
+            <button type="submit" class="btn btn-outline-danger">リセット</button>
+        </div>
+    </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">レポート</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    たかしくんは，終始落ち着いて勉強に取り組まれていました．
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
 </div>
 
 {% endblock %}
