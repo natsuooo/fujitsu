@@ -29,3 +29,26 @@
     color: #F8C601;
     /* 選択された星以降をすべて黄色にする */
 }
+
+
+
+video {
+    background-color: #111;
+    width: 100%;
+  }
+
+.p2p-media {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* 相手のスクリーン */
+.p2p-media .remote-stream {
+   width: 50%;
+}
+
+/* 自分のスクリーン */  
+.p2p-media .local-stream {
+  width: 30%;
+}

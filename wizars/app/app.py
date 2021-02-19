@@ -42,6 +42,11 @@ def mypage():
         return render_template("mypage.html", teachers=teachers)
     else:
         return render_template("mypage.html")
+
+# ビデオチャット
+@app.route("/video")
+def video():
+    return render_template("video.html")
     
 # 先生登録
 @app.route("/register", methods=["GET", "POST"])

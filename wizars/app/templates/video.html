@@ -1,0 +1,37 @@
+{% extends "main_layout.html" %} {% block content%}
+
+
+<div class="container-fluid">
+    <div class="">
+        <!-- 相手の画面 -->
+        <!-- <div class="remote-stream">
+          <video id="remote-video"></video>
+        </div> -->
+        <!-- 自分の画面-->
+        <div class="local-stream">
+          <video id="my-video" class="mb-5"></video>
+          <p class="mt-5">Your ID: <span id="my-id"></span></p>
+  
+          <!-- PeerID入力画面 -->
+          <div class="row">
+              <div class="col-auto">
+                <input type="text" placeholder="相手のPeerIDを入力してください" id="remote-id" class="form-control">
+              </div>
+              <div class="col-auto">
+                <button id="make-call" class="btn btn-primary">開始</button>
+              </div>
+              <div class="col-auto">
+                <button id="make-close" class="btn btn-outline-primary ">終了</button>
+              </div>
+          </div>
+          
+          
+        </div>
+      </div>
+
+    <script src="//cdn.webrtc.ecl.ntt.com/skyway-4.4.0.js"></script>
+    <script src="../static/js/key.js"></script>
+    <script src="../static/js/connect.js"></script>
+</div>
+
+{% endblock %}
