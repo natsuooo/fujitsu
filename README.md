@@ -10,9 +10,12 @@
 - - スライド・機械学習コード等: https://drive.google.com/drive/folders/1d44fvu7-oBuY_j4jknNi76366AYwUO6P?usp=sharing 
 
 # デモ動画
-## AIマッチング
-### 1.1 LSTM
+## wizars
 ![lstm](https://user-images.githubusercontent.com/33245796/108644975-79d86880-74f4-11eb-848d-0af8565c4db2.gif)
+
+## 1. AIマッチング
+### 1.1 LSTM
+![lstm-demo](https://user-images.githubusercontent.com/33245796/108646149-4dbee680-74f8-11eb-95e6-ac2d48d17341.gif)
 
 ### 1.2 Matrix-Factorization
 ![matrix-factorization](https://user-images.githubusercontent.com/33245796/108644322-da19db00-74f1-11eb-93b6-956f7d328285.gif)
